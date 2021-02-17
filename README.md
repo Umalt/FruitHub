@@ -3,7 +3,7 @@
 ![license](https://img.shields.io/github/stars/Umalt/FruitHub)
 ![license](https://img.shields.io/github/license/Umalt/FruitHub)
 # FruitHub
-Android demo app following best practices: Kotlin, Coroutines, Jetpack (Room, Navigation component), Clean Architecture, MVP (Moxy), Dagger
+Android demo app
 
 # License
 ```
