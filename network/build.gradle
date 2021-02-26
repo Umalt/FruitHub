@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
 }
 
@@ -8,13 +8,13 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.umalt.fruithub"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,10 +32,17 @@ android {
     }
 }
 
+def retrofit_version = '2.9.0'
+
+
 dependencies {
     implementation project(':data')
-    implementation project(':network')
-    implementation project(':database')
-    implementation project(':domain')
-    implementation project(':presentation')
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    // HttpLoggingInterceptor
+    // noinspection GradleDependency
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
 }

@@ -1,2 +1,7 @@
+include ':presentation'
+include ':database'
+include ':network'
+include ':data'
+include ':domain'
 include ':app'
 rootProject.name = "fruit_hub"
