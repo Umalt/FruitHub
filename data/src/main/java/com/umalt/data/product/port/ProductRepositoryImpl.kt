@@ -8,15 +8,27 @@ import com.umalt.domain.product.port.ProductRepository
  * Created by Umalt on 2/23/21
  */
 class ProductRepositoryImpl(
-    private val api: ProductApi,
-    private val database: ProductCache,
+    private val productApi: ProductApi,
+    private val productCache: ProductCache,
     private val mapper: ProductEntityMapper
 ) : ProductRepository {
+    override suspend fun saveProducts(products: List<ProductEntity>) {
+        productCache.insert(*products.map { mapper.mapFromEntity(it) }.toTypedArray())
+    }
+
     override suspend fun getRemoteProducts(): List<ProductEntity> {
-        return api.getProducts().map { mapper.mapToEntity(it) }
+        return productApi.getProducts().map { mapper.mapToEntity(it) }
     }
 
     override suspend fun getLocalProducts(): List<ProductEntity> {
-        return database.getProducts().map { mapper.mapToEntity(it) }
+        return productCache.getProducts().map { mapper.mapToEntity(it) }
+    }
+
+    override suspend fun getLocalProductById(id: String): ProductEntity {
+        return mapper.mapToEntity(productCache.getProductById(id))
+    }
+
+    override suspend fun deleteAll() {
+        productCache.deleteAll()
     }
 }

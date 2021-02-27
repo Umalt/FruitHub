@@ -1,13 +1,13 @@
 package com.umalt.network.mapper
 
 import com.umalt.data.product.model.Product
-import com.umalt.network.model.response.ProductResponse
+import com.umalt.network.model.response.ProductItem
 
 /**
  * Created by Umalt on 2/22/21
  */
-class ProductResponseMapper : Mapper<ProductResponse, Product> {
-    override fun mapFromResponse(obj: ProductResponse): Product {
+object ProductResponseMapper : Mapper<ProductItem, Product> {
+    override fun mapFromResponse(obj: ProductItem): Product {
         return Product(
             obj.id,
             obj.title,

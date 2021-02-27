@@ -14,6 +14,6 @@ class ProductApiImpl @Inject constructor(
     private val mapper: ProductResponseMapper
 ) : ProductApi {
     override suspend fun getProducts(): List<Product> {
-        return apiService.getProducts().result.map { mapper.mapFromResponse(it) }
+        return apiService.getProducts().result.items.map { mapper.mapFromResponse(it) }
     }
 }

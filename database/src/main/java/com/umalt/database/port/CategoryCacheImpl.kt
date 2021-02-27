@@ -14,6 +14,10 @@ class CategoryCacheImpl @Inject constructor(
     private val database: RoomDatabase,
     private val mapper: CategoryDBModelMapper
 ) : CategoryCache {
+    override suspend fun getCategoryById(id: String): Category {
+        return mapper.mapFromDBModel(database.categoryDao().getById(id))
+    }
+
     override suspend fun getCategories(): List<Category> {
         return database.categoryDao().getAll().map {
             Category(
@@ -40,8 +44,7 @@ class CategoryCacheImpl @Inject constructor(
         database.categoryDao().delete(*obj.map { mapper.mapToDBModel(it).category }.toTypedArray())
     }
 
-
-    suspend fun deleteAll() {
+    override suspend fun deleteAll() {
         database.categoryDao().deleteAll()
     }
 }

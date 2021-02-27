@@ -11,10 +11,10 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("$API_V1/categories")
-    suspend fun getCategories(): BaseResponse<List<CategoryResponse>>
+    suspend fun getCategories(): BaseResponse<CategoryResponse>
 
     @GET("$API_V1/products")
-    suspend fun getProducts(): BaseResponse<List<ProductResponse>>
+    suspend fun getProducts(): BaseResponse<ProductResponse>
 
     companion object {
         private const val API_V1 = "/api/v1"

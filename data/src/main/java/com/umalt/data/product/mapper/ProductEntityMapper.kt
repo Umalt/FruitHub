@@ -7,7 +7,7 @@ import com.umalt.domain.product.entity.ProductEntity
 /**
  * Created by Umalt on 2/23/21
  */
-class ProductEntityMapper : Mapper<Product, ProductEntity> {
+object ProductEntityMapper : Mapper<Product, ProductEntity> {
     override fun mapToEntity(obj: Product): ProductEntity {
         return ProductEntity(
             obj.id,

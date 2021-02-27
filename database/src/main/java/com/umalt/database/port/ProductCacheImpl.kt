@@ -13,6 +13,10 @@ class ProductCacheImpl @Inject constructor(
     private val database: RoomDatabase,
     private val mapper: ProductDBModelMapper
 ) : ProductCache {
+    override suspend fun getProductById(id: String): Product {
+        return mapper.mapFromDBModel(database.productDao().getById(id))
+    }
+
     override suspend fun getProducts(): List<Product> {
         return database.productDao().getAll().map { mapper.mapFromDBModel(it) }
     }
@@ -29,7 +33,7 @@ class ProductCacheImpl @Inject constructor(
         database.productDao().delete(*obj.map { mapper.mapToDBModel(it) }.toTypedArray())
     }
 
-    suspend fun deleteAll() {
+    override suspend fun deleteAll() {
         database.productDao().deleteAll()
     }
 }
