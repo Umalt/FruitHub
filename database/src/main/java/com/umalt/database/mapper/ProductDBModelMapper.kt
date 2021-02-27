@@ -6,7 +6,7 @@ import com.umalt.database.model.ProductDBModel
 /**
  * Created by Umalt on 2/23/21
  */
-class ProductDBModelMapper : Mapper<Product, ProductDBModel> {
+object ProductDBModelMapper : Mapper<Product, ProductDBModel> {
     override fun mapToDBModel(obj: Product): ProductDBModel {
         return ProductDBModel(
             obj.id,

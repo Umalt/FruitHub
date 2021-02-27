@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Database
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.umalt.database.dao.CategoryDao
 import com.umalt.database.dao.ItemDao
 import com.umalt.database.dao.ProductDao
@@ -23,7 +22,7 @@ import com.umalt.database.model.ProductDBModel
     ],
     version = 1
 )
-abstract class RoomDatabase : RoomDatabase() {
+abstract class RoomDatabase : androidx.room.RoomDatabase() {
     abstract fun categoryDao(): CategoryDao
     abstract fun itemDao(): ItemDao
     abstract fun productDao(): ProductDao

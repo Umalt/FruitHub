@@ -1,4 +1,3 @@
-include ':presentation'
 include ':database'
 include ':network'
 include ':data'

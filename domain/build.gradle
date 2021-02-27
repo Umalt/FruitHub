@@ -9,5 +9,8 @@ java {
 }
 
 dependencies {
+    // Test
+    testImplementation 'junit:junit:4.13.2'
+
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

@@ -38,6 +38,11 @@ def room_version = '2.2.6'
 dependencies {
     implementation project(':data')
 
+    // Test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
     // Room persistence library
     api "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"

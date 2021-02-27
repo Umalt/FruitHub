@@ -9,13 +9,13 @@ import com.umalt.domain.category.entity.CategoryEntityProduct
 /**
  * Created by Umalt on 2/22/21
  */
-class CategoryEntityMapper : Mapper<Category, CategoryEntity> {
+object CategoryEntityMapper : Mapper<Category, CategoryEntity> {
     override fun mapToEntity(obj: Category): CategoryEntity {
         return CategoryEntity(
             obj.id,
             obj.title,
             obj.sortIndex,
-            obj.products?.map { CategoryEntityProduct(obj.id, obj.sortIndex) }
+            obj.products?.map { CategoryEntityProduct(it.id, it.sortIndex) }
         )
     }
 

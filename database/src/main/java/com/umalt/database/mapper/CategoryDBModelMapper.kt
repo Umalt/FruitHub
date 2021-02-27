@@ -9,7 +9,7 @@ import com.umalt.database.model.relation.CategoryWithProducts
 /**
  * Created by Umalt on 2/23/21
  */
-class CategoryDBModelMapper : Mapper<Category, CategoryWithProducts> {
+object CategoryDBModelMapper : Mapper<Category, CategoryWithProducts> {
     override fun mapToDBModel(obj: Category): CategoryWithProducts {
         return CategoryWithProducts(
             CategoryDBModel(obj.id, obj.title, obj.sortIndex),

@@ -14,6 +14,6 @@ class CategoryApiImpl @Inject constructor(
     private val mapper: CategoryResponseMapper
 ) : CategoryApi {
     override suspend fun getCategories(): List<Category> {
-        return apiService.getCategories().result.map { mapper.mapFromResponse(it) }
+        return apiService.getCategories().result.items.map { mapper.mapFromResponse(it) }
     }
 }
