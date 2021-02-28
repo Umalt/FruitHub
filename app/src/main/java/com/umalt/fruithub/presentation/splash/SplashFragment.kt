@@ -37,8 +37,14 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash), SplashView {
         ivLogo = view.findViewById(R.id.iv_splash_logo)
     }
 
-    override fun openNextScreen() {
-        navController.navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
+    override fun openNextScreen(isUserExist: Boolean) {
+        navController.navigate(
+            if (isUserExist) {
+                SplashFragmentDirections.actionSplashFragmentToMenuFragment()
+            } else {
+                SplashFragmentDirections.actionSplashFragmentToWelcomeFragment()
+            }
+        )
     }
 
     override fun setProgressVisibility(isVisible: Boolean) {

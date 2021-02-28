@@ -2,9 +2,10 @@
     <string name="app_name">Fruit Hub</string>
 
     <!--  Commons  -->
-    <string name="common_error">Ошибка</string>
-    <string name="common_ok">Ок</string>
-    <string name="common_repeat">Повторить</string>
+    <string name="common_error">Error</string>
+    <string name="common_attention">Attention</string>
+    <string name="common_ok">OK</string>
+    <string name="common_repeat">Repeat</string>
 
     <!--  Error titles  -->
     <string name="error_title_connect">Проблемы с сетью</string>
@@ -25,4 +26,10 @@
     <string name="fragment_welcome_title">Get The Freshest Fruit Salad Combo</string>
     <string name="fragment_welcome_continue">Let\'s continue</string>
     <string name="fragment_welcome_description">We deliver the best and freshest fruit salad in town. Order for a combo today!!!</string>
+
+    <!--  AuthFragment  -->
+    <string name="fragment_auth_start_ordering">Start ordering</string>
+    <string name="fragment_auth_please_enter_name">Please enter your name</string>
+    <string name="fragment_auth_hint_name">Your name</string>
+    <string name="fragment_auth_what_is_name">What is your name?</string>
 </resources>
