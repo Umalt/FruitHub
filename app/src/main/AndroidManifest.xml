@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FruitHub">
 
-        <activity android:name=".presentation.app.AppActivity">
+        <activity
+            android:name=".presentation.app.AppActivity"
+            android:theme="@style/Theme.FruitHub.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

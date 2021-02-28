@@ -1,9 +1,12 @@
 package com.umalt.fruithub.presentation.base
 
 import android.content.Context
+import android.os.Bundle
+import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import dev.chrisbanes.insetter.applyInsetter
 import moxy.MvpAppCompatFragment
 
 /**
@@ -19,6 +22,18 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
     override fun onAttach(context: Context) {
         super.onAttach(context)
         baseActivity = context as? BaseActivity
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.applyInsetter {
+            type(statusBars = true) {
+                padding()
+            }
+            type(navigationBars = true) {
+                padding()
+            }
+        }
     }
 
     fun showMessage(

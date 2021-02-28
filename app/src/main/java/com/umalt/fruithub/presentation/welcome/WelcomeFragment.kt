@@ -1,5 +1,7 @@
 package com.umalt.fruithub.presentation.welcome
 
+import android.os.Bundle
+import android.view.View
 import com.umalt.fruithub.R
 import com.umalt.fruithub.presentation.base.BaseFragment
 import moxy.ktx.moxyPresenter
@@ -10,4 +12,8 @@ import moxy.ktx.moxyPresenter
 class WelcomeFragment : BaseFragment(R.layout.fragment_welcome), WelcomeView {
 
     private val presenter: WelcomePresenter by moxyPresenter { WelcomePresenter() }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 }
