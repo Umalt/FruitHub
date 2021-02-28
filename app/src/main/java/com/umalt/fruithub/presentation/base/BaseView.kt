@@ -1,11 +1,14 @@
 package com.umalt.fruithub.presentation.base
 
 import moxy.MvpView
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
 /**
  * Created by Umalt on 2/26/21
  */
 interface BaseView : MvpView {
+    @StateStrategyType(OneExecutionStateStrategy::class)
     fun showMessage(
         title: String?,
         message: String?,
@@ -16,5 +19,6 @@ interface BaseView : MvpView {
         cancellable: Boolean = true
     )
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
     fun setProgressVisibility(isVisible: Boolean)
 }

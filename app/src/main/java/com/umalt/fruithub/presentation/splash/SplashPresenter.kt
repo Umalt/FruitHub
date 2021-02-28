@@ -8,8 +8,10 @@ import com.umalt.domain.product.usecase.DeleteAllProductsUseCase
 import com.umalt.domain.product.usecase.GetLocalProductsUseCase
 import com.umalt.domain.product.usecase.GetRemoteProductsUseCase
 import com.umalt.domain.product.usecase.SaveProductsUseCase
+import com.umalt.fruithub.R
 import com.umalt.fruithub.di.DIManager
 import com.umalt.fruithub.presentation.base.BasePresenter
+import com.umalt.fruithub.utils.Utils.getString
 import com.umalt.fruithub.utils.Utils.isNetworkError
 import com.umalt.fruithub.utils.handle
 import kotlinx.coroutines.launch
@@ -51,9 +53,14 @@ class SplashPresenter : BasePresenter<SplashView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        loadData()
+    }
 
+    private fun loadData() {
         presenterScope.launch {
             try {
+                viewState.setProgressVisibility(true)
+
                 val remoteCategories = getRemoteCategoriesUseCase.execute()
                 deleteAllCategoriesUseCase.execute()
                 saveCategoriesUseCase.execute(remoteCategories)
@@ -64,13 +71,37 @@ class SplashPresenter : BasePresenter<SplashView>() {
 
                 viewState.openNextScreen()
             } catch (e: Exception) {
-                e.handle().apply { viewState.showMessage(third, second) }
-                if (e.isNetworkError() &&
-                    getLocalCategoriesUseCase.execute().isNotEmpty() &&
-                    getLocalProductsUseCase.execute().isNotEmpty()
-                ) {
-                    viewState.openNextScreen()
+                val isThereLocalData = getLocalCategoriesUseCase.execute().isNotEmpty() &&
+                        getLocalProductsUseCase.execute().isNotEmpty()
+
+                val shouldRepeatDataLoading = e.isNetworkError() && !isThereLocalData
+
+                val posBtnTxt = getString(
+                    when {
+                        shouldRepeatDataLoading -> R.string.common_repeat
+                        else -> R.string.common_ok
+                    }
+                )
+
+                val posBtnAction = if (shouldRepeatDataLoading) {
+                    { loadData() }
+                } else {
+                    null
                 }
+
+                e.handle().apply {
+                    viewState.showMessage(
+                        third,
+                        second,
+                        posBtnTxt = posBtnTxt,
+                        posBtnAction = posBtnAction,
+                        cancellable = !shouldRepeatDataLoading
+                    )
+                }
+
+                if (e.isNetworkError() && isThereLocalData) viewState.openNextScreen()
+            } finally {
+                viewState.setProgressVisibility(false)
             }
         }
     }
