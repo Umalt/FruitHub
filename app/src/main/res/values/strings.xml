@@ -20,4 +20,9 @@
     <string name="error_message_internal_server">Ошибка на сервере. Пожалуйста, повторите попытку позже</string>
     <string name="error_message_server_unavailable">Сервер временно недоступен. Пожалуйста, повторите попытку позже</string>
     <string name="error_message_malformed_json">Ошибка загрузки данных. Пожалуйста, повторите попытку позже</string>
+
+    <!--  WelcomeFragment  -->
+    <string name="fragment_welcome_title">Get The Freshest Fruit Salad Combo</string>
+    <string name="fragment_welcome_continue">Let\'s continue</string>
+    <string name="fragment_welcome_description">We deliver the best and freshest fruit salad in town. Order for a combo today!!!</string>
 </resources>

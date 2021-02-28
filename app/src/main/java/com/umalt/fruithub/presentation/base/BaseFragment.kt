@@ -26,14 +26,7 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.applyInsetter {
-            type(statusBars = true) {
-                padding()
-            }
-            type(navigationBars = true) {
-                padding()
-            }
-        }
+        view.applySystemWindowsSizes()
     }
 
     fun showMessage(
@@ -52,5 +45,16 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
 
     open fun setProgressVisibility(isVisible: Boolean) {
         baseActivity?.setProgressVisibility(isVisible)
+    }
+
+    open fun View.applySystemWindowsSizes() {
+        applyInsetter {
+            type(statusBars = true) {
+                padding()
+            }
+            type(navigationBars = true) {
+                padding()
+            }
+        }
     }
 }
