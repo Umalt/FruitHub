@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.welcome.WelcomeFragment">
+    tools:context=".presentation.auth.AuthFragment">
 
     <ScrollView
-        android:id="@+id/sv_welcome"
+        android:id="@+id/sv_auth"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/ll_welcome_fruit_cart"
+                android:id="@+id/ll_auth_fruit_cart"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
@@ -29,11 +29,10 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/iv_welcome_fruit_cart"
                     android:layout_width="301dp"
-                    android:layout_height="260dp"
-                    android:layout_marginTop="150dp"
-                    android:src="@drawable/welcome_fruit_cart" />
+                    android:layout_height="281.21dp"
+                    android:layout_marginTop="128.79dp"
+                    android:src="@drawable/auth_fruit_cart" />
 
                 <View
                     android:layout_width="301dp"
@@ -44,44 +43,44 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_welcome_title"
+                android:id="@+id/tv_auth_what_is_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
                 android:fontFamily="@font/brandon_grotesque_medium"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:text="@string/fragment_welcome_title"
+                android:text="@string/fragment_auth_what_is_name"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll_welcome_fruit_cart"
-                tools:text="some large text some large text some large text some large text some large text some large text" />
+                app:layout_constraintTop_toBottomOf="@id/ll_auth_fruit_cart" />
 
-            <TextView
-                android:id="@+id/tv_welcome_description"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/et_auth_user_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/brandon_grotesque_regular"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/fragment_welcome_description"
-                android:textColor="@color/black_5d5"
-                android:textSize="16sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/auth_user_name_background"
+                android:hint="@string/fragment_auth_hint_name"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_welcome_title"
-                tools:text="some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text some large text" />
+                app:layout_constraintTop_toBottomOf="@id/tv_auth_what_is_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_welcome_continue"
+        android:id="@+id/btn_auth_start_ordering"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -90,7 +89,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/common_primary_button_background"
         android:fontFamily="@font/brandon_grotesque_medium"
-        android:text="@string/fragment_welcome_continue"
+        android:text="@string/fragment_auth_start_ordering"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp" />

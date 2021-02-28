@@ -29,16 +29,17 @@ class WelcomeFragment : BaseFragment(R.layout.fragment_welcome), WelcomeView, Vi
 
         btnContinue = view.findViewById(R.id.btn_welcome_continue)
         btnContinue.setOnClickListener(this)
-        btnContinue.viewTreeObserver.addOnGlobalLayoutListener(object :
-            ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                if (btnContinue.height > 0) {
-                    val scrollViewPadding = view.height - btnContinue.y + 24.toPx()
-                    svWelcome.updatePadding(bottom = scrollViewPadding.toInt())
-                    btnContinue.viewTreeObserver.removeOnGlobalLayoutListener(this)
+        btnContinue.viewTreeObserver.addOnGlobalLayoutListener(
+            object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    if (btnContinue.height > 0) {
+                        val scrollViewPadding = view.height - btnContinue.y + 24.toPx()
+                        svWelcome.updatePadding(bottom = scrollViewPadding.toInt())
+                        svWelcome.fullScroll(ScrollView.FOCUS_DOWN)
+                        btnContinue.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    }
                 }
-            }
-        })
+            })
     }
 
     override fun View.applySystemWindowsSizes() {
@@ -52,7 +53,7 @@ class WelcomeFragment : BaseFragment(R.layout.fragment_welcome), WelcomeView, Vi
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_welcome_continue -> {
-
+                navController.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAuthFragment())
             }
         }
     }

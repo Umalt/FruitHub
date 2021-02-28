@@ -4,11 +4,15 @@ import com.umalt.data.category.mapper.CategoryEntityMapper
 import com.umalt.data.category.port.CategoryRepositoryImpl
 import com.umalt.data.product.mapper.ProductEntityMapper
 import com.umalt.data.product.port.ProductRepositoryImpl
+import com.umalt.data.user.mapper.UserEntityMapper
+import com.umalt.data.user.port.UserRepositoryImpl
 import com.umalt.database.db.RoomDatabase
 import com.umalt.database.mapper.CategoryDBModelMapper
 import com.umalt.database.mapper.ProductDBModelMapper
+import com.umalt.database.mapper.UserDBModeMapper
 import com.umalt.database.port.CategoryCacheImpl
 import com.umalt.database.port.ProductCacheImpl
+import com.umalt.database.port.UserCacheImpl
 import com.umalt.domain.category.usecase.DeleteAllCategoriesUseCase
 import com.umalt.domain.category.usecase.GetLocalCategoriesUseCase
 import com.umalt.domain.category.usecase.GetRemoteCategoriesUseCase
@@ -17,6 +21,7 @@ import com.umalt.domain.product.usecase.DeleteAllProductsUseCase
 import com.umalt.domain.product.usecase.GetLocalProductsUseCase
 import com.umalt.domain.product.usecase.GetRemoteProductsUseCase
 import com.umalt.domain.product.usecase.SaveProductsUseCase
+import com.umalt.domain.user.usecase.GetUserUseCase
 import com.umalt.fruithub.di.scope.SplashScope
 import com.umalt.network.ApiService
 import com.umalt.network.mapper.CategoryResponseMapper
@@ -103,5 +108,20 @@ object SplashModule {
     @Provides
     fun provideGetLocalCategoriesUseCase(repository: CategoryRepositoryImpl): GetLocalCategoriesUseCase {
         return GetLocalCategoriesUseCase(repository)
+    }
+
+    @SplashScope
+    @Provides
+    fun provideUserRepository(database: RoomDatabase): UserRepositoryImpl {
+        return UserRepositoryImpl(
+            UserCacheImpl(database, UserDBModeMapper),
+            UserEntityMapper
+        )
+    }
+
+    @SplashScope
+    @Provides
+    fun provideGetUserUseCase(repository: UserRepositoryImpl): GetUserUseCase {
+        return GetUserUseCase(repository)
     }
 }
