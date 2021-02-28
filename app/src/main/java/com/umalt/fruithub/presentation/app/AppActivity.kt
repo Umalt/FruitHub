@@ -4,6 +4,7 @@ import com.umalt.fruithub.R
 import com.umalt.fruithub.presentation.base.BaseActivity
 import moxy.ktx.moxyPresenter
 
+
 /**
  * Created by Umalt on 2/23/21
  */
