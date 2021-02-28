@@ -35,7 +35,7 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
         )
     }
 
-    fun setProgressVisibility(isVisible: Boolean) {
+    open fun setProgressVisibility(isVisible: Boolean) {
         baseActivity?.setProgressVisibility(isVisible)
     }
 }

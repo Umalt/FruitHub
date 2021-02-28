@@ -4,13 +4,13 @@
     <!--  Commons  -->
     <string name="common_error">Ошибка</string>
     <string name="common_ok">Ок</string>
+    <string name="common_repeat">Повторить</string>
 
     <!--  Error titles  -->
     <string name="error_title_connect">Проблемы с сетью</string>
     <string name="error_title_internal_server">Ошибка на сервере</string>
     <string name="error_title_server_unavailable">Сервер недоступен</string>
     <string name="error_title_page_not_found">Страница не найдена</string>
-
 
     <!--  Error messages  -->
     <string name="error_message_unknown">В приложении возникла ошибка</string>
