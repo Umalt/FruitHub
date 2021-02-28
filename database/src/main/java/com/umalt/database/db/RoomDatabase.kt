@@ -7,9 +7,11 @@ import androidx.room.Room
 import com.umalt.database.dao.CategoryDao
 import com.umalt.database.dao.ItemDao
 import com.umalt.database.dao.ProductDao
+import com.umalt.database.dao.UserDao
 import com.umalt.database.model.CategoryDBModel
 import com.umalt.database.model.ItemDBModel
 import com.umalt.database.model.ProductDBModel
+import com.umalt.database.model.UserDBModel
 
 /**
  * Created by Umalt on 2/23/21
@@ -18,14 +20,16 @@ import com.umalt.database.model.ProductDBModel
     entities = [
         CategoryDBModel::class,
         ProductDBModel::class,
-        ItemDBModel::class
+        ItemDBModel::class,
+        UserDBModel::class
     ],
-    version = 1
+    version = 2
 )
 abstract class RoomDatabase : androidx.room.RoomDatabase() {
     abstract fun categoryDao(): CategoryDao
     abstract fun itemDao(): ItemDao
     abstract fun productDao(): ProductDao
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile

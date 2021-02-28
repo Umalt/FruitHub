@@ -8,6 +8,7 @@ import com.umalt.domain.product.usecase.DeleteAllProductsUseCase
 import com.umalt.domain.product.usecase.GetLocalProductsUseCase
 import com.umalt.domain.product.usecase.GetRemoteProductsUseCase
 import com.umalt.domain.product.usecase.SaveProductsUseCase
+import com.umalt.domain.user.usecase.GetUserUseCase
 import com.umalt.fruithub.R
 import com.umalt.fruithub.di.DIManager
 import com.umalt.fruithub.presentation.base.BasePresenter
@@ -47,6 +48,9 @@ class SplashPresenter : BasePresenter<SplashView>() {
     @Inject
     lateinit var deleteAllProductsUseCase: DeleteAllProductsUseCase
 
+    @Inject
+    lateinit var getUserUseCase: GetUserUseCase
+
     init {
         DIManager.getSplashSubcomponent().inject(this)
     }
@@ -69,7 +73,7 @@ class SplashPresenter : BasePresenter<SplashView>() {
                 deleteAllProductsUseCase.execute()
                 saveProductsUseCase.execute(remoteProducts)
 
-                viewState.openNextScreen()
+                viewState.openNextScreen(getUserUseCase.execute() != null)
             } catch (e: Exception) {
                 val isThereLocalData = getLocalCategoriesUseCase.execute().isNotEmpty() &&
                         getLocalProductsUseCase.execute().isNotEmpty()
@@ -99,7 +103,9 @@ class SplashPresenter : BasePresenter<SplashView>() {
                     )
                 }
 
-                if (e.isNetworkError() && isThereLocalData) viewState.openNextScreen()
+                if (e.isNetworkError() && isThereLocalData) {
+                    viewState.openNextScreen(getUserUseCase.execute() != null)
+                }
             } finally {
                 viewState.setProgressVisibility(false)
             }
