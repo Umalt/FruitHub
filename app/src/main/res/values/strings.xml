@@ -7,6 +7,11 @@
     <string name="common_ok">OK</string>
     <string name="common_repeat">Repeat</string>
 
+    <!--  Menu  -->
+    <string name="menu_catalog">Catalog</string>
+    <string name="menu_orders">Orders</string>
+    <string name="menu_cart">Cart</string>
+
     <!--  Error titles  -->
     <string name="error_title_connect">Проблемы с сетью</string>
     <string name="error_title_internal_server">Ошибка на сервере</string>

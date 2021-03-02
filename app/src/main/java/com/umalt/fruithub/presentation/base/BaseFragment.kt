@@ -4,8 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
+import com.umalt.fruithub.utils.navigation.OnNavigateListener
 import dev.chrisbanes.insetter.applyInsetter
 import moxy.MvpAppCompatFragment
 
@@ -15,13 +14,16 @@ import moxy.MvpAppCompatFragment
 abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
     MvpAppCompatFragment(contentLayoutId) {
 
-    protected val navController: NavController by lazy { findNavController() }
-
     private var baseActivity: BaseActivity? = null
+
+    protected var onNavigateListener: OnNavigateListener? = null
+
+    var onBackPressedAction: (() -> Unit)? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         baseActivity = context as? BaseActivity
+        onNavigateListener = context as? OnNavigateListener
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

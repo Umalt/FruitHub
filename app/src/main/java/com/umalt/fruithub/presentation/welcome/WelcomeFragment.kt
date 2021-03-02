@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ScrollView
 import androidx.core.view.updatePadding
 import com.umalt.fruithub.R
+import com.umalt.fruithub.presentation.auth.AuthFragment
 import com.umalt.fruithub.presentation.base.BaseFragment
 import com.umalt.fruithub.utils.toPx
 import dev.chrisbanes.insetter.applyInsetter
@@ -53,8 +54,12 @@ class WelcomeFragment : BaseFragment(R.layout.fragment_welcome), WelcomeView, Vi
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_welcome_continue -> {
-                navController.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAuthFragment())
+                onNavigateListener?.onNavigate(AuthFragment(), AuthFragment.TAG)
             }
         }
+    }
+
+    companion object {
+        const val TAG = "WelcomeFragment"
     }
 }
