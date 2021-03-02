@@ -28,7 +28,7 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.applySystemWindowsSizes()
+        view.applySystemWindowsInsets()
     }
 
     fun showMessage(
@@ -49,12 +49,9 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
         baseActivity?.setProgressVisibility(isVisible)
     }
 
-    open fun View.applySystemWindowsSizes() {
+    open fun View.applySystemWindowsInsets() {
         applyInsetter {
             type(statusBars = true) {
-                padding()
-            }
-            type(navigationBars = true) {
                 padding()
             }
         }

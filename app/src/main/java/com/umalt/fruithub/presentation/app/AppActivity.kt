@@ -1,5 +1,6 @@
 package com.umalt.fruithub.presentation.app
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.umalt.fruithub.R
 import com.umalt.fruithub.presentation.base.BaseActivity
@@ -18,6 +19,11 @@ class AppActivity : BaseActivity(R.layout.activity_app), AppView, OnNavigateList
 
     private val currentFragment: BaseFragment?
         get() = supportFragmentManager.findFragmentById(R.id.container) as? BaseFragment
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_FruitHub) // set default app theme instead fullscreen theme
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onBackPressed() {
         currentFragment?.onBackPressedAction?.invoke() ?: super.onBackPressed()

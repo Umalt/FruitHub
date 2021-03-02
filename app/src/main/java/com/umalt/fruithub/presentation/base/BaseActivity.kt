@@ -1,11 +1,11 @@
 package com.umalt.fruithub.presentation.base
 
-import android.os.Build
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import com.umalt.fruithub.R
+import com.umalt.fruithub.utils.setTransparentNavBar
+import com.umalt.fruithub.utils.setTransparentStatusBar
 import moxy.MvpAppCompatActivity
 
 /**
@@ -15,14 +15,9 @@ abstract class BaseActivity(@LayoutRes contentLayoutId: Int) :
     MvpAppCompatActivity(contentLayoutId), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_FruitHub) // set default app theme instead fullscreen theme
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-            )
-        }
+        window.setTransparentStatusBar()
+        window.setTransparentNavBar()
     }
 
     override fun showMessage(
