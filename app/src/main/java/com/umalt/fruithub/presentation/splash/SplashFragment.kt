@@ -7,6 +7,8 @@ import android.view.animation.ScaleAnimation
 import android.widget.ImageView
 import com.umalt.fruithub.R
 import com.umalt.fruithub.presentation.base.BaseFragment
+import com.umalt.fruithub.presentation.main.MainFragment
+import com.umalt.fruithub.presentation.welcome.WelcomeFragment
 import moxy.ktx.moxyPresenter
 
 /**
@@ -38,13 +40,11 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash), SplashView {
     }
 
     override fun openNextScreen(isUserExist: Boolean) {
-        navController.navigate(
-            if (isUserExist) {
-                SplashFragmentDirections.actionSplashFragmentToMenuFragment()
-            } else {
-                SplashFragmentDirections.actionSplashFragmentToWelcomeFragment()
-            }
-        )
+        if (isUserExist) {
+            onNavigateListener?.onNavigate(MainFragment(), MainFragment.TAG)
+        } else {
+            onNavigateListener?.onNavigate(WelcomeFragment(), WelcomeFragment.TAG)
+        }
     }
 
     override fun setProgressVisibility(isVisible: Boolean) {
@@ -53,5 +53,9 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash), SplashView {
         } else {
             logoScaleAnimation.cancel()
         }
+    }
+
+    companion object {
+        const val TAG = "SplashFragment"
     }
 }

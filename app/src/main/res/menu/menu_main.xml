@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_catalog"
+        android:icon="@drawable/selector_menu_catalog_item"
+        android:title="@string/menu_catalog" />
+
+    <item
+        android:id="@+id/action_orders"
+        android:icon="@drawable/selector_menu_orders_item"
+        android:title="@string/menu_orders" />
+
+    <item
+        android:id="@+id/action_cart"
+        android:icon="@drawable/selector_menu_cart_item"
+        android:title="@string/menu_cart" />
+</menu>
