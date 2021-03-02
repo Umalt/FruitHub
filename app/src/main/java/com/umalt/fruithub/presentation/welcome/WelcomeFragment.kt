@@ -43,7 +43,7 @@ class WelcomeFragment : BaseFragment(R.layout.fragment_welcome), WelcomeView, Vi
             })
     }
 
-    override fun View.applySystemWindowsSizes() {
+    override fun View.applySystemWindowsInsets() {
         applyInsetter {
             type(navigationBars = true) {
                 padding()

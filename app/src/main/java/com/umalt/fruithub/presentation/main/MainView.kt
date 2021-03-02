@@ -8,5 +8,5 @@ import com.umalt.fruithub.presentation.base.BaseView
 interface MainView : BaseView {
     fun openScreen(fragmentTag: String)
 
-    fun closeApp()
+    fun minimizeApp()
 }

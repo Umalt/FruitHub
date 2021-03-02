@@ -49,7 +49,7 @@ class AuthFragment : BaseFragment(R.layout.fragment_auth), AuthView, View.OnClic
         )
     }
 
-    override fun View.applySystemWindowsSizes() {
+    override fun View.applySystemWindowsInsets() {
         applyInsetter {
             type(navigationBars = true) {
                 padding()

@@ -38,7 +38,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main), MainView {
         // attach fragments here
     }
 
-    override fun closeApp() {
+    override fun minimizeApp() {
         activity?.moveTaskToBack(true)
     }
 

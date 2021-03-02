@@ -22,7 +22,7 @@ class MainPresenter : BasePresenter<MainView>() {
             fragmentStack.pop()
             viewState.openScreen(fragmentStack.lastElement() as String)
         } else {
-            viewState.closeApp()
+            viewState.minimizeApp()
         }
     }
 }
