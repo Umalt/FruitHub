@@ -11,4 +11,9 @@ class AppPresenter : BasePresenter<AppView>() {
     init {
         DIManager.getAppSubcomponent().inject(this)
     }
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.launchSplash()
+    }
 }

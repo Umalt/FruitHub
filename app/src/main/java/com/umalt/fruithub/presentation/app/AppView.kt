@@ -5,4 +5,6 @@ import com.umalt.fruithub.presentation.base.BaseView
 /**
  * Created by Umalt on 2/27/21
  */
-interface AppView : BaseView
+interface AppView : BaseView {
+    fun launchSplash()
+}

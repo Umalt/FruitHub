@@ -9,6 +9,7 @@ import android.widget.ScrollView
 import androidx.core.view.updatePadding
 import com.umalt.fruithub.R
 import com.umalt.fruithub.presentation.base.BaseFragment
+import com.umalt.fruithub.presentation.main.MainFragment
 import com.umalt.fruithub.utils.hideKeyboard
 import com.umalt.fruithub.utils.toPx
 import dev.chrisbanes.insetter.applyInsetter
@@ -58,7 +59,7 @@ class AuthFragment : BaseFragment(R.layout.fragment_auth), AuthView, View.OnClic
 
     override fun openNextScreen() {
         etName.hideKeyboard()
-        navController.navigate(AuthFragmentDirections.actionAuthFragmentToMenuFragment())
+        onNavigateListener?.onNavigate(MainFragment(), MainFragment.TAG)
     }
 
     override fun onClick(v: View) {
@@ -67,5 +68,9 @@ class AuthFragment : BaseFragment(R.layout.fragment_auth), AuthView, View.OnClic
                 presenter.saveUser(etName.text.toString())
             }
         }
+    }
+
+    companion object {
+        const val TAG = "AuthFragment"
     }
 }
