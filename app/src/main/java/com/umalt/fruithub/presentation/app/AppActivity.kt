@@ -18,7 +18,7 @@ class AppActivity : BaseActivity(R.layout.activity_app), AppView, OnNavigateList
     private val presenter: AppPresenter by moxyPresenter { AppPresenter() }
 
     private val currentFragment: BaseFragment?
-        get() = supportFragmentManager.findFragmentById(R.id.container) as? BaseFragment
+        get() = supportFragmentManager.findFragmentById(R.id.fl_app_container) as? BaseFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_FruitHub) // set default app theme instead fullscreen theme
