@@ -1,6 +1,7 @@
 package com.umalt.fruithub.presentation.main
 
 import com.umalt.fruithub.presentation.base.BasePresenter
+import com.umalt.fruithub.presentation.catalog.CatalogFragment
 import java.util.*
 
 /**
@@ -9,6 +10,11 @@ import java.util.*
 class MainPresenter : BasePresenter<MainView>() {
 
     private val fragmentStack = Stack<String>()
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.openScreen(CatalogFragment.TAG)
+    }
 
     fun addFragmentToStack(tag: String) {
         if (fragmentStack.contains(tag)) {
