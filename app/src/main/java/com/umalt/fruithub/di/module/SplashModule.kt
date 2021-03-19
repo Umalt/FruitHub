@@ -64,6 +64,15 @@ object SplashModule {
 
     @SplashScope
     @Provides
+    fun provideUserRepository(database: RoomDatabase): UserRepositoryImpl {
+        return UserRepositoryImpl(
+            UserCacheImpl(database, UserDBModeMapper),
+            UserEntityMapper
+        )
+    }
+
+    @SplashScope
+    @Provides
     fun provideDeleteAllProductsUseCase(repository: ProductRepositoryImpl): DeleteAllProductsUseCase {
         return DeleteAllProductsUseCase(repository)
     }
@@ -108,15 +117,6 @@ object SplashModule {
     @Provides
     fun provideGetLocalCategoriesUseCase(repository: CategoryRepositoryImpl): GetLocalCategoriesUseCase {
         return GetLocalCategoriesUseCase(repository)
-    }
-
-    @SplashScope
-    @Provides
-    fun provideUserRepository(database: RoomDatabase): UserRepositoryImpl {
-        return UserRepositoryImpl(
-            UserCacheImpl(database, UserDBModeMapper),
-            UserEntityMapper
-        )
     }
 
     @SplashScope
