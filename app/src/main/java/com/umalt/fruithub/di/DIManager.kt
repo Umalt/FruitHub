@@ -1,11 +1,9 @@
 package com.umalt.fruithub.di
 
-import com.umalt.fruithub.di.component.AppSubcomponent
-import com.umalt.fruithub.di.component.ApplicationComponent
-import com.umalt.fruithub.di.component.AuthSubcomponent
-import com.umalt.fruithub.di.component.SplashSubcomponent
+import com.umalt.fruithub.di.component.*
 import com.umalt.fruithub.di.module.AppModule
 import com.umalt.fruithub.di.module.AuthModule
+import com.umalt.fruithub.di.module.CatalogModule
 import com.umalt.fruithub.di.module.SplashModule
 
 /**
@@ -17,6 +15,7 @@ object DIManager {
     private var appSubcomponent: AppSubcomponent? = null
     private var authSubcomponent: AuthSubcomponent? = null
     private var splashSubcomponent: SplashSubcomponent? = null
+    private var catalogSubcomponent: CatalogSubcomponent? = null
 
     fun getAppSubcomponent(): AppSubcomponent {
         if (appSubcomponent == null) {
@@ -38,5 +37,13 @@ object DIManager {
         }
         return splashSubcomponent
             ?: throw IllegalStateException("$splashSubcomponent must not be null")
+    }
+
+    fun getCatalogSubcomponent(): CatalogSubcomponent {
+        if (catalogSubcomponent == null) {
+            catalogSubcomponent = applicationComponent.addCatalogSubcomponent(CatalogModule)
+        }
+        return catalogSubcomponent
+            ?: throw IllegalStateException("$catalogSubcomponent must not be null")
     }
 }
